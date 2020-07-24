@@ -1,0 +1,59 @@
+<html>
+</br></br></br></br></br></br></br></br></br>
+<style>
+h1 {
+   color: #000000; 
+}
+.box {
+  background: #2db34a;
+  border-radius: 6px;
+  transition-property: background, border-radius;
+  transition-duration: .2s, 1s;
+  transition-timing-function: rectangle;
+}
+.box:hover {
+  background: #ff7b29;
+  border-radius: 50%;
+}
+button {
+  border: 0;
+  background: #0087cc;
+  border-radius: 4px;
+  box-shadow: 0 5px 0 #006599;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 12px 20px;
+  transition: all .1s linear;
+}
+button:active {
+  box-shadow: 0 2px 0 #006599;
+  transform: translateY(3px);
+}
+</style>
+
+<style>
+body{
+background-image:url( 4.gif    );
+background-repeat:no-repeat;
+background-size:cover;
+}
+</style>
+  <center>
+</br><h1><b><font size="10"><div class="box">ADMIN LOGIN</div></b></h1></font>
+<form action="http://localhost/movie/adminLoginRec.php">
+    <label><b><font size="6">USERNAME:</b></label></font>
+    <input type="text" placeholder="Enter Username" name="uname"  required="true"><br/>
+</br>
+    <label><b><font size="6">PASSWORD:</b></label></font>
+    <input type="password" placeholder="Enter Password" name="psw"  required="true">
+</br></br>
+<button><b>LOGIN</b></button>
+</form>
+<form action="http://localhost/movie/front.html">
+<button><b>back</b></button>
+ </center>
+</form>
+</html>

@@ -1,0 +1,307 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 26, 2017 at 02:41 PM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `movie`
+--
+CREATE DATABASE IF NOT EXISTS `movie` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `movie`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lead_cast`
+--
+
+DROP TABLE IF EXISTS `lead_cast`;
+CREATE TABLE IF NOT EXISTS `lead_cast` (
+  `w_id` int(5) NOT NULL,
+  `w_name` varchar(30) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `age` int(5) NOT NULL,
+  PRIMARY KEY (`w_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lead_cast`
+--
+
+INSERT INTO `lead_cast` (`w_id`, `w_name`, `sex`, `age`) VALUES
+(10, 'prabhas', 'male', 38),
+(11, 'rajamouli', 'male', 55),
+(12, 'lawrence', 'male', 45),
+(13, 'aaa', 'male', 44),
+(14, 'karunakaran', 'male', 40),
+(16, 'mahesh babu', 'male', 45),
+(17, 'sukumar', 'male', 51),
+(20, 'adavi sheshu', 'male', 30),
+(21, 'ganesh', 'male', 38),
+(22, 'rakshith  shettY', 'male', 40),
+(23, 'ros', 'male', 50),
+(24, 'srk', 'male', 54);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+CREATE TABLE IF NOT EXISTS `login` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`username`, `password`) VALUES
+('a', 'a'),
+('b', 'b'),
+('h', 'h'),
+('asd', 'asd'),
+('dd', 'dd'),
+('asdf', 'asd'),
+('1', '1'),
+('z', 'z'),
+('t', 't'),
+('cvv', 'cvv'),
+('ff', '6'),
+('d', 'dddd'),
+('', ''),
+('harshitha', 'harshi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loginadmin`
+--
+
+DROP TABLE IF EXISTS `loginadmin`;
+CREATE TABLE IF NOT EXISTS `loginadmin` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `loginadmin`
+--
+
+INSERT INTO `loginadmin` (`username`, `password`) VALUES
+('niki', 'niki');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `movie`
+--
+
+DROP TABLE IF EXISTS `movie`;
+CREATE TABLE IF NOT EXISTS `movie` (
+  `mov_id` int(10) NOT NULL,
+  `mov_name` varchar(40) NOT NULL,
+  `year` int(5) NOT NULL,
+  `language` varchar(20) NOT NULL,
+  `genere` varchar(20) NOT NULL,
+  `no_of_ratings` int(4) NOT NULL DEFAULT '0',
+  `avg_stars` float(4,1) NOT NULL DEFAULT '0.0',
+  PRIMARY KEY (`mov_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `movie`
+--
+
+INSERT INTO `movie` (`mov_id`, `mov_name`, `year`, `language`, `genere`, `no_of_ratings`, `avg_stars`) VALUES
+(101, 'baahubali2', 2017777, 'telugu', 'action', 2, 4.5),
+(110, 'darling', 20149, 'telugu', 'romantic', 2, 4.5),
+(112, 'dukudu', 2010, 'telugu', 'romantic', 0, 0.0),
+(115, 'nenokkadine', 2014, 'telugu', 'thriller', 0, 0.0),
+(120, 'rebel', 2015, 'telugu', 'action', 0, 0.0),
+(150, 'muni', 2008, 'telugu', 'horror', 0, 0.0),
+(220, 'gaalipata', 2008, 'kannada', 'romantic', 0, 0.0),
+(230, 'rathavara', 2015, 'kannada', 'action', 0, 0.0),
+(235, 'simple agi ond love story', 2013, 'kannada', 'romantic', 1, 5.0),
+(240, 'karva', 2016, 'kannada', 'horror', 0, 0.0),
+(330, 'titanic', 1997, 'english', 'romantic', 0, 0.0),
+(335, 'fifty shades of grey', 2015, 'english', 'romantic', 0, 0.0),
+(340, 'it follows', 2014, 'english', 'horror', 0, 0.0),
+(345, 'the conguring', 2013, 'english', 'horror', 0, 0.0),
+(350, 'the big sick', 2017, 'english', 'comedy', 0, 0.0),
+(400, 'houseful', 2010, 'hindi', 'comedy', 0, 0.0),
+(450, 'dilwale dulhania le jayenge', 1995, 'hindi', 'romantic', 0, 0.0),
+(610, 'bangalore days', 2014, 'malayalam', 'romantic', 0, 0.0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ratings`
+--
+
+DROP TABLE IF EXISTS `ratings`;
+CREATE TABLE IF NOT EXISTS `ratings` (
+  `mov_id` int(10) NOT NULL,
+  `stars` int(1) NOT NULL,
+  KEY `mov_id` (`mov_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ratings`
+--
+
+INSERT INTO `ratings` (`mov_id`, `stars`) VALUES
+(110, 5),
+(110, 4),
+(235, 5),
+(101, 5),
+(101, 4);
+
+--
+-- Triggers `ratings`
+--
+DROP TRIGGER IF EXISTS `trig1`;
+DELIMITER $$
+CREATE TRIGGER `trig1` AFTER INSERT ON `ratings` FOR EACH ROW BEGIN
+call avg_rating(NEW.stars,NEW.mov_id);
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `statistics`
+--
+
+DROP TABLE IF EXISTS `statistics`;
+CREATE TABLE IF NOT EXISTS `statistics` (
+  `mov_id` int(10) NOT NULL,
+  `likes` int(10) NOT NULL,
+  `comment` varchar(50) NOT NULL,
+  KEY `statistics_ibfk_1` (`mov_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `statistics`
+--
+
+INSERT INTO `statistics` (`mov_id`, `likes`, `comment`) VALUES
+(101, 6, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `theatre`
+--
+
+DROP TABLE IF EXISTS `theatre`;
+CREATE TABLE IF NOT EXISTS `theatre` (
+  `tid` int(10) NOT NULL,
+  `t_name` varchar(30) NOT NULL,
+  `t_area` varchar(25) NOT NULL,
+  `tic_cost` int(5) NOT NULL,
+  `mov_id` int(10) NOT NULL,
+  PRIMARY KEY (`tid`),
+  KEY `theatre_ibfk_1` (`mov_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `theatre`
+--
+
+INSERT INTO `theatre` (`tid`, `t_name`, `t_area`, `tic_cost`, `mov_id`) VALUES
+(1, 'vaishnavi', 'uttarahalli', 300, 101),
+(2, 'vaibhavi', 'uttarahalli', 200, 110),
+(3, 'manasa', 'konankunte', 250, 120),
+(4, 'renuka prasanna', 'jp nagar', 170, 235),
+(5, 'arcade', 'mysore road', 350, 610);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `works_on`
+--
+
+DROP TABLE IF EXISTS `works_on`;
+CREATE TABLE IF NOT EXISTS `works_on` (
+  `mov_id` int(10) NOT NULL,
+  `w_id` int(10) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  PRIMARY KEY (`mov_id`,`w_id`),
+  KEY `mov_id` (`mov_id`),
+  KEY `works_on_ibfk_2` (`w_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `works_on`
+--
+
+INSERT INTO `works_on` (`mov_id`, `w_id`, `type`) VALUES
+(101, 10, 'hero'),
+(101, 11, 'director'),
+(110, 10, 'hero'),
+(112, 16, 'hero'),
+(112, 17, 'director'),
+(115, 16, 'hero'),
+(120, 10, 'hero'),
+(120, 12, 'director'),
+(150, 12, 'hero'),
+(220, 21, 'hero'),
+(235, 22, 'hero'),
+(330, 23, 'hero'),
+(400, 20, 'comedian'),
+(450, 24, 'hero'),
+(610, 13, 'hero');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ratings`
+--
+ALTER TABLE `ratings`
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`mov_id`) REFERENCES `movie` (`mov_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `statistics`
+--
+ALTER TABLE `statistics`
+  ADD CONSTRAINT `statistics_ibfk_1` FOREIGN KEY (`mov_id`) REFERENCES `movie` (`mov_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `theatre`
+--
+ALTER TABLE `theatre`
+  ADD CONSTRAINT `theatre_ibfk_1` FOREIGN KEY (`mov_id`) REFERENCES `movie` (`mov_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `works_on`
+--
+ALTER TABLE `works_on`
+  ADD CONSTRAINT `works_on_ibfk_1` FOREIGN KEY (`mov_id`) REFERENCES `movie` (`mov_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `works_on_ibfk_2` FOREIGN KEY (`w_id`) REFERENCES `lead_cast` (`w_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
